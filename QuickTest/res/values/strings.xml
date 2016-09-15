@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">recipesapp</string>
+    <string name="welcome_title">Welcome to Your Recipes!</string>
+    <string name="search_button">Find a Recipe</string>
+    <string name="new_button">Create a New Recipe</string>
+    <string name="help_button">Help</string>
+    <string name="exit_button">Quit</string>
+</resources>

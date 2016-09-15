@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_androng" default="compile.module.androng">
+  <dirname property="module.androng.basedir" file="${ant.file.module_androng}"/>
+  
+  <property name="module.jdk.home.androng" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.androng" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.androng" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.androng" value="${compiler.args}"/>
+  
+  <property name="androng.output.dir" value="${module.androng.basedir}/../../AndroidPong/out/production/Androng"/>
+  <property name="androng.testoutput.dir" value="${module.androng.basedir}/../../AndroidPong/out/test/Androng"/>
+  
+  <path id="androng.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="androng.module.production.classpath">
+    <path refid="${module.jdk.classpath.androng}"/>
+    <path refid="library.android_2.2_platform.classpath"/>
+  </path>
+  
+  <path id="androng.runtime.production.module.classpath">
+    <pathelement location="${androng.output.dir}"/>
+  </path>
+  
+  <path id="androng.module.classpath">
+    <path refid="${module.jdk.classpath.androng}"/>
+    <pathelement location="${androng.output.dir}"/>
+    <path refid="library.android_2.2_platform.classpath"/>
+  </path>
+  
+  <path id="androng.runtime.module.classpath">
+    <pathelement location="${androng.testoutput.dir}"/>
+    <pathelement location="${androng.output.dir}"/>
+    <path refid="library.android_2.2_platform.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.androng">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.androng">
+    <patternset refid="excluded.from.module.androng"/>
+  </patternset>
+  
+  <path id="androng.module.sourcepath">
+    <dirset dir="${module.androng.basedir}/../../ContentRoot">
+      <include name="Android"/>
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.androng" depends="compile.module.androng.production,compile.module.androng.tests" description="Compile module Androng"/>
+  
+  <target name="compile.module.androng.production" depends="register.custom.compilers" description="Compile module Androng; production classes">
+    <mkdir dir="${androng.output.dir}"/>
+    <javac2 destdir="${androng.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.androng}/javac">
+      <compilerarg line="${compiler.args.androng}"/>
+      <bootclasspath refid="androng.module.bootclasspath"/>
+      <classpath refid="androng.module.production.classpath"/>
+      <src refid="androng.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.androng"/>
+    </javac2>
+    
+    <copy todir="${androng.output.dir}">
+      <fileset dir="${module.androng.basedir}">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.androng.basedir}/../gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.androng.tests" depends="register.custom.compilers,compile.module.androng.production" description="compile module Androng; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.androng" description="cleanup module">
+    <delete dir="${androng.output.dir}"/>
+    <delete dir="${androng.testoutput.dir}"/>
+  </target>
+</project>

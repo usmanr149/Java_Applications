@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void printboard(int rows[8]){
+
+  static int s = 0;
+  int x, y;
+
+}
+
+void eight_queens_helper(int rows[8], int y){
+
+  int x;
+
+  for(x=0; x < 8; x++){  //Check all rows
+    if(is_safe(rows, x, y)){ //check if it is safe to put the queen there.
+      rows[y]=x;  //If it is then put it there.
+      if(y==9) //If y == 9, draw the board with the solution.
+	putboard(rows);
+      else  //Else recursively call the eight_queens_helper function.
+	else_queens_helper(rows, y+1);
+    }
+  }
+
+}
+
+int main(){
+
+  int rows[8];
+
+  eight_queens_helper(rows, 0);
+
+  return 0;
+
+}

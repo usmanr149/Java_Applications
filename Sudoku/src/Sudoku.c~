@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <stdlib.h> 
+
+#define ROWS 9
+#define COLS 9
+
+
+int puzzle[ROWS][COLS]={{0, 0, 0, 0, 0, 0, 0, 9, 0},
+{1, 9, 0, 4, 7, 0, 6, 0, 8},
+{0, 5, 2, 8, 1, 9, 4, 0, 7},
+{2, 0, 0, 0, 4, 8, 0, 0, 0},
+{0, 0, 9, 0, 0, 0, 5, 0, 0},
+{0, 0, 0, 7, 5, 0, 0, 0, 9},
+{9, 0, 7, 3, 6, 4, 1, 8, 0},
+{5, 0, 6, 0, 8, 1, 0, 7, 4},
+{0, 8, 0, 0, 0, 0, 0, 0, 0}};
+
+int SetRows = 0;
+int SetCols = 0;
+int SetGrid = 0;
+
+int CheckRows(int k){
+
+for(int i = 0 ; i < ROWS ; i++)
+  for(int j = 0 ; j < COLS ; j++)
+    if(k != i)
+      if(puzzle[i][j] == puzzle[k][j])
+	SetRows = 1;
+}
+
+int CheckCols(int l){
+
+for(int i = 0 ; i < ROWS ; i++)
+  for(int j = 0 ; j < COLS ; j++)
+    if(k != i)
+      if(puzzle[i][j] == puzzle[k][j])
+	SetRows = 1;
+}
+
+int CheckGrid(int k, int l){
+
+int m = k/3;
+int n = l/3;
+
+for(int i = 3*m ; i < m+3 ; i++)
+  for(int j = 3*n ; j < n+3 ; j++)
+    if(k != i && l != j)
+      if(puzzle[i][j]==puzzle[k][l])
+	SetGrid = 1;
+}
+
+int main(){
+
+  for(int i = 0 ; i < ROWS ; i++){
+    for(int j = 0 ; j < COLS ; j++){
+      printf("%d   ", puzzle[i][j]);
+    }
+    printf("/n");
+  }
+
+for(int i = 0 ; i < ROWS ; i++)
+  for(int j = 0 ; j < COLS ; j++){
+    if(puzzle[i][j] != 0){
+      CheckRows(i);
+      CheckCols(j);
+      CheckGrid(i,j);
+       }
+  }
+}

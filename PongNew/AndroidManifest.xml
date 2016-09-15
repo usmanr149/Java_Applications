@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.Pong"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <application android:label="Pong2"
+                 android:hardwareAccelerated="true"
+                 android:icon="@drawable/icon">
+        <uses-sdk android:minSdkVersion="14"/>
+        <activity android:name="catalinc.games.pong.Pong"
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:screenOrientation="landscape"
+                  android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

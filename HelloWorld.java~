@@ -1,0 +1,11 @@
+
+
+public class HelloWorld
+{
+Random rand = new Random();
+
+int  n = rand.nextInt(50) + 1;
+    System.out.println(n);
+    //50 is the maximum and the 1 is our minimum 
+
+}

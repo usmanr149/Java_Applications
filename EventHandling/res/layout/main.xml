@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        >
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/red_prompt"
+            android:id="@+id/button1"
+            android:onClick="buttonClicked"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/blue_prompt"
+            android:id="@+id/button2"
+            android:onClick="buttonClicked"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yellow_prompt"
+            android:id="@+id/button3"
+            android:onClick="buttonClicked"/>
+    <RadioGroup
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/red_prompt"
+            android:id="@+id/radioButton"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blue_prompt"
+            android:id="@+id/radioButton2"
+            android:layout_gravity="center_horizontal"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yellow_prompt"
+            android:id="@+id/radioButton3" android:layout_gravity="center_horizontal"/>
+    </RadioGroup>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hello World, Event_Handling"
+            android:id="@+id/color_region"
+            />
+</LinearLayout>
